@@ -1,11 +1,12 @@
 {
-    "name": "FLUX KONTEXT",
-    "short_name": "FK",
-    "description": "A fullscreen web application with integrated controls.",
-    "start_url": ".",
+    "name": "Fullscreen Iframe App",
+    "short_name": "Iframe App",
+    "description": "A fullscreen web application wrapper with PWA and utility controls.",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#007bff",
+    "orientation": "any",
     "icons": [
         {
             "src": "/icon-192.png",

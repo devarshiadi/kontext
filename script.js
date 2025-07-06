@@ -1,4 +1,4 @@
-// Wait for the DOM to be fully loaded before running our scripts
+// Wait for the DOM to be fully loaded before attaching event listeners to buttons
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- PWA Installation Logic ---
@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let deferredPrompt; // This variable will hold the install event
 
     window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        console.log('`beforeinstallprompt` event was fired.');
+        // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
-        // Show the install button now that we know the app is installable
+        // Show our custom install button
         installButton.style.display = 'flex';
     });
 
@@ -39,29 +40,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearDataButton = document.getElementById('clear-data-btn');
 
     clearDataButton.addEventListener('click', async () => {
-        if (confirm('Are you sure you want to clear all cookies, storage, and cache for this website? This will not affect the embedded content.')) {
+        if (confirm('Are you sure you want to clear all cookies, storage, and cache for this website?')) {
             try {
-                // 1. Clear Cookies
-                const cookies = document.cookie.split(";");
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i];
-                    const eqPos = cookie.indexOf("=");
-                    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
-                }
-
-                // 2. Clear Local Storage and Session Storage
+                // Clear Cookies, Local Storage, and Session Storage
+                document.cookie.split(";").forEach(c => document.cookie = c.replace(/^ +/, "").replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`));
                 localStorage.clear();
                 sessionStorage.clear();
 
-                // 3. Clear Cache Storage
+                // Unregister all service workers.
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                    }
+                }
+                
+                // Clear all Caches
                 if ('caches' in window) {
                     const keys = await caches.keys();
                     await Promise.all(keys.map(key => caches.delete(key)));
                 }
 
-                alert('Website data has been successfully cleared. The page will now reload.');
-                // Reload the page to apply changes
+                alert('All site data cleared. The page will now reload.');
                 window.location.reload();
 
             } catch (error) {
@@ -70,15 +70,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
-    // --- Service Worker Registration ---
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch(error => {
-                console.error('Service Worker registration failed:', error);
-            });
-    }
 });
