@@ -1,18 +1,14 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Ai IMage Editor</title>
+  <title>Fullscreen App Switcher</title>
 
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome (no integrity so it always loads) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pap4XK/iW+H+xNw4ecXxGPe0bmbH/ZGxK+ed+eFhX7e9+Qxfl7BQK4M0+FI+V/8C1y+VgnjKq+Kb4YwX9f+Kkg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
   />
 
   <!-- Stylesheet -->
@@ -48,7 +44,6 @@
       <option value="https://xintao-gfpgan.hf.space/">
         GFPGAN Face Restoration
       </option>
-      <!-- add more options here -->
     </select>
   </div>
 
@@ -62,19 +57,16 @@
 
   <!-- Fixed Buttons -->
   <div class="fixed-button-container">
-    <!-- Clear Site Data -->
     <button id="clear-data-btn" class="icon-button" title="Clear Site Data">
-      <i class="fas fa-trash"></i>
+      <i class="fa fa-trash"></i>
     </button>
 
-    <!-- Install PWA -->
     <button id="install-app-btn" class="icon-button" title="Install Web App" style="display:none;">
-      <i class="fas fa-download"></i>
+      <i class="fa fa-download"></i>
     </button>
 
-    <!-- Open GFPGAN Demo -->
     <button id="toggle-app-btn" class="icon-button" title="Open GFPGAN Demo">
-      <i class="fas fa-external-link-alt"></i>
+      <i class="fa fa-external-link"></i>
     </button>
   </div>
 
