@@ -1,4 +1,3 @@
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
   const installButton = document.getElementById('install-app-btn');
   let deferredPrompt;
