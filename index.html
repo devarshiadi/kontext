@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Fullscreen App</title>
-    
-    <!-- Link to our Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Link to the Web App Manifest for PWA capabilities -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- PWA Theme Color -->
-    <meta name="theme-color" content="#007bff">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Fullscreen App</title>
 
-    <!--
-      CRITICAL CHANGE: Inline script to register the Service Worker.
-      This runs as soon as possible and uses the 'load' event, which is best practice.
-    -->
-    <script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-              .then(registration => {
-                console.log('✅ Service Worker registered successfully with scope:', registration.scope);
-              })
-              .catch(err => {
-                console.error('❌ Service Worker registration failed:', err);
-              });
-          });
-        }
-    </script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="./manifest.json">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#007bff">
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('./service-worker.js')
+          .then(reg => console.log('SW registered with scope:', reg.scope))
+          .catch(err => console.error('SW registration failed:', err));
+      });
+    }
+  </script>
 </head>
 <body>
 
-    <!-- This iframe will display the external content fullscreen -->
-    <iframe 
-        id="fullscreen-iframe"
-        src="https://black-forest-labs-flux-1-kontext-dev.hf.space/"
-        frameborder="0"
-        allowfullscreen>
-    </iframe>
+  <!-- Fullscreen Iframe -->
+  <iframe id="fullscreen-iframe"
+          src="https://black-forest-labs-flux-1-kontext-dev.hf.space/"
+          frameborder="0"
+          allowfullscreen></iframe>
 
-    <!-- Container for our fixed action buttons -->
-    <div class="fixed-button-container">
-        
-        <!-- Button to clear local website data -->
-        <button id="clear-data-btn" class="icon-button" title="Clear Site Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
-        </button>
+  <!-- Fixed Buttons -->
+  <div class="fixed-button-container">
+    <button id="clear-data-btn" class="icon-button" title="Clear Site Data">
+      <!-- trash icon SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+        <path d="M135.2 17.7L128 32H32C14.3 ..."/>
+      </svg>
+    </button>
 
-        <!-- Button to install the Web App (PWA) -->
-        <button id="install-app-btn" class="icon-button" title="Install Web App">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"/></svg>
-        </button>
+    <button id="install-app-btn" class="icon-button" title="Install Web App" style="display:none;">
+      <!-- install icon SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+        <path d="M216 0h80c13.3 ..."/>
+      </svg>
+    </button>
+  </div>
 
-    </div>
-
-    <!-- The script for button logic is now loaded at the end -->
-    <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
