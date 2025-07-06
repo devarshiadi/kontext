@@ -1,74 +1,23 @@
-/* Basic reset to remove default browser spacing */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden; /* Prevents scrollbars on the main page */
-    font-family: sans-serif;
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+#iframe-container, #fullscreen-iframe {
+  width: 100%; height: 100%; border: none;
 }
-
-/* Styles for the fullscreen iframe */
-#fullscreen-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none; /* Explicitly remove the border */
-}
-
-/* Container to position the buttons */
 .fixed-button-container {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 9999; /* Ensure buttons are on top of the iframe */
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between the buttons */
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 12px;
 }
-
-/* Common styles for both icon buttons */
 .icon-button {
-    width: 60px;
-    height: 60px;
-    background-color: #007bff; /* A nice, modern blue */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Makes the button circular */
-    cursor: pointer;
-    
-    /* Center the icon inside the button */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* A subtle shadow for a "floating" effect */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    
-    /* Smooth transition for hover effects */
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
-
-/* Hover effect to give user feedback */
-.icon-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-}
-
-/* Size for the SVG icons inside the buttons */
-.icon-button svg {
-    width: 26px;
-    height: 26px;
-}
-
-/* Initially hide the install button. It will be shown by JS if the app is installable. */
-#install-app-btn {
-    display: none;
-    background-color: #28a745; /* Green for install action */
-}
-
-#install-app-btn:hover {
-    background-color: #218838; /* Darker green on hover */
-}
+.icon-button svg { width: 24px; height: 24px; }
