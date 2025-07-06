@@ -1,9 +1,19 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ai image editor</title>
+  <title>Ai IMage Editor</title>
+
+  <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pap4XK/iW+H+xNw4ecXxGPe0bmbH/ZGxK+ed+eFhX7e9+Qxfl7BQK4M0+FI+V/8C1y+VgnjKq+Kb4YwX9f+Kkg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./style.css">
@@ -38,7 +48,7 @@
       <option value="https://xintao-gfpgan.hf.space/">
         GFPGAN Face Restoration
       </option>
-      <!-- add more options here as needed -->
+      <!-- add more options here -->
     </select>
   </div>
 
@@ -54,27 +64,17 @@
   <div class="fixed-button-container">
     <!-- Clear Site Data -->
     <button id="clear-data-btn" class="icon-button" title="Clear Site Data">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
-        <path d="M135.2 17.7L128 32H32C14.3 ..."/>
-      </svg>
+      <i class="fas fa-trash"></i>
     </button>
 
     <!-- Install PWA -->
     <button id="install-app-btn" class="icon-button" title="Install Web App" style="display:none;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
-        <path d="M216 0h80c13.3 ..."/>
-      </svg>
+      <i class="fas fa-download"></i>
     </button>
 
-    <!-- New Toggle Button: Open GFPGAN -->
+    <!-- Open GFPGAN Demo -->
     <button id="toggle-app-btn" class="icon-button" title="Open GFPGAN Demo">
-      <!-- chain/link icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
-        <path d="M326.6 185.4c12.5 12.5 12.5 32.8 0 45.3l-96 96c-12.5 
-                 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l96-96c12.5-12.5 
-                 32.8-12.5 45.3 0zm-141.2 141.2c-12.5-12.5-12.5-32.8 0-45.3l96-96c12.5-12.5 
-                 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-96 96c-12.5 12.5-32.8 12.5-45.3 0z"/>
-      </svg>
+      <i class="fas fa-external-link-alt"></i>
     </button>
   </div>
 
