@@ -1,3 +1,4 @@
+/* style.css */
 html, body {
   margin: 0;
   padding: 0;
@@ -16,14 +17,19 @@ html, body {
   position: fixed;
   top: 16px;
   left: 16px;
-  z-index: 10;              /* on top of iframe */
-  background: rgba(255,255,255,0.9);
-  padding: 8px;
-  border-radius: 4px;
+  z-index: 10;
+  background: rgba(255,255,255,0.95);
+  padding: 8px 12px;
+  border-radius: 6px;
   font-family: sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.app-selector select {
+  font-size: 1rem;
+  padding: 4px 6px;
 }
 
-/* Your fixed buttons (including the new one) */
+/* Fixed icon-buttons */
 .fixed-button-container {
   position: fixed;
   bottom: 16px;
@@ -37,16 +43,24 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: white;
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
   border: none;
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
 }
 
-.icon-button svg {
-  width: 24px;
-  height: 24px;
+.icon-button i {
+  font-size: 1.25rem;
+  color: #333333;
+}
+
+/* Touch / hover feedback */
+.icon-button:active,
+.icon-button:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
 }
